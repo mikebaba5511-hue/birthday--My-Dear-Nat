@@ -3,81 +3,103 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Nat</title>
+<title>For Nat</title>
 
 <style>
 
 body{
 margin:0;
-padding:0;
 height:100vh;
 overflow:hidden;
-font-family: 'Segoe UI', sans-serif;
-background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+font-family:Segoe UI;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
 display:flex;
 justify-content:center;
 align-items:center;
+flex-direction:column;
 color:white;
-}
-
-/* การ์ดจดหมาย */
-
-.card{
-background:rgba(0,0,0,0.35);
-padding:40px;
-border-radius:20px;
-max-width:750px;
-backdrop-filter:blur(10px);
-box-shadow:0 20px 40px rgba(0,0,0,0.3);
-}
-
-h1{
 text-align:center;
+}
+
+/* title */
+
+#title{
+font-size:40px;
 margin-bottom:20px;
 }
 
-/* ข้อความ */
+/* envelope */
 
-#message{
-white-space:pre-line;
-line-height:1.8;
-font-size:18px;
-}
-
-/* ปุ่ม */
-
-button{
-margin-top:20px;
-padding:12px 30px;
-border:none;
-border-radius:25px;
-background:white;
-color:#ff6b81;
-font-size:18px;
+.envelope{
+font-size:100px;
 cursor:pointer;
+transition:0.3s;
 }
 
-button:hover{
-transform:scale(1.05);
+.envelope:hover{
+transform:scale(1.2);
 }
 
-/* ดอกไม้ลอย */
+/* cake */
 
-.flower{
+#cake{
+display:none;
+font-size:120px;
+cursor:pointer;
+animation:float 2s infinite ease-in-out;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+}
+
+/* card */
+
+#card{
+display:none;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:20px;
+width:80%;
+max-width:600px;
+height:300px;
+overflow:auto;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* text */
+
+#text{
+white-space:pre-line;
+line-height:1.6;
+}
+
+/* roses */
+
+.rose{
 position:absolute;
-font-size:24px;
-animation: fall linear infinite;
+font-size:30px;
+animation:fall 6s linear infinite;
 }
 
 @keyframes fall{
-0%{
-transform:translateY(-10vh);
-opacity:1;
+0%{transform:translateY(-10vh)}
+100%{transform:translateY(110vh)}
 }
-100%{
-transform:translateY(110vh);
-opacity:0;
+
+/* fireworks */
+
+.firework{
+position:absolute;
+font-size:40px;
+animation:boom 1s ease-out forwards;
 }
+
+@keyframes boom{
+0%{transform:scale(0)}
+100%{transform:scale(2);opacity:0}
 }
 
 </style>
@@ -85,102 +107,128 @@ opacity:0;
 
 <body>
 
-<div class="card">
+<div id="title">For Nat 🤍</div>
 
-<h1>🎂 Happy Birthday Nat 🎂</h1>
+<div class="envelope" onclick="openEnvelope()">💌</div>
 
-<div id="message"></div>
+<div id="cake" onclick="openMessage()">🎂</div>
 
-<button onclick="start()">เปิดคำอวยพร 🤍</button>
-
+<div id="card">
+<div id="text"></div>
 </div>
 
 <audio id="music" loop>
-<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3f5c6cbe52.mp3" type="audio/mp3">
+<source src="reason.mp3" type="audio/mp3">
 </audio>
 
 <script>
 
-const text = `สุขสันต์ วันเกิด สุขสันต์วันเกิดนะเคะ 🎂
-วันนี้เป็นอีกหนึ่งวันที่สำคัญของเธอ เค้าแค่อยากอวยพรให้เธอจากใจจริง ๆ
+/* message */
 
-🤍 ขอให้ปีนี้เป็นปีที่ใจดีกับเธอมาก ๆ ขอให้เธอได้เจอแต่เรื่องดี ๆ
-มีรอยยิ้มเยอะ ๆ และมีความสุขกับสิ่งเล็ก ๆ ในทุกวัน
-ถึงบางวันจะเหนื่อยหรือหนักไปบ้าง
-เค้าก็ยังคิดเหมือนเดิมว่าเธอเป็นคนที่เก่งมาก
-และผ่านอะไรหลาย ๆ อย่างมาได้เสมอ
+const message = `สุขสันต์วันเกิดนะ Nat 🎂
 
-ถ้าวันไหนมันเหนื่อยหรือรู้สึกว่าต้องแบกรับอะไรหลายอย่างคนเดียว
-ก็อยากให้เธอรู้ไว้ว่ายังมีคนหนึ่งที่คอยเอาใจช่วยเธออยู่เสมอ
+วันนี้เป็นอีกหนึ่งวันที่สำคัญของเธอ
+เค้าแค่อยากอวยพรให้เธอจากใจจริง
 
-เธอเป็นคนที่เค้าอยากให้พบเจอแต่ความสุขจริง ๆ
-ไม่ว่าจะวันนี้หรือวันไหน ๆ
-เค้าก็ยังคอยหวังดีและเป็นกำลังใจให้เธอเสมอ
+🤍 ขอให้ปีนี้ใจดีกับเธอมาก ๆ
+ขอให้เธอได้เจอแต่เรื่องดี ๆ
+มีรอยยิ้มเยอะ ๆ
 
-ดูแลตัวเองดี ๆ นะ พักผ่อนให้พอ และขับรถดี ๆ ด้วย 🤍
+ถึงบางวันจะเหนื่อย
+เค้าก็ยังคิดเสมอว่าเธอเก่งมาก
+
+ดูแลตัวเองดี ๆ นะ
+พักผ่อนให้พอ และขับรถดี ๆ ด้วย
 
 ฉันรักเธอ รักมาเสมอ
-หลงรักทุก ๆ อย่างที่เป็นเธอ
-และอยากจะขอโทษที่เคยทำอะไรไม่ดีลงไปจริง ๆ
+และขอโทษในสิ่งที่เคยทำไม่ดี
 
-สุขสันต์วันเกิดนะเธอ
-ขอให้ปีนี้เป็นปีที่ดีสำหรับเธอ 🤍
-
-ปีนี้ไม่ว่าเธอจะพบเจอหรือผ่านอะไรมา
-เชื่อว่าเธอจะยังยืนได้เสมอ
-เชื่อมั่นในตัวเองนะ
-
-และเค้าจะคอยอยู่ตรงนี้เสมอ
-
-ขอให้มีคนมาซัพพอร์ตคนรวย ๆ เยอะ ๆ
-สมดังที่เธอหวังนะครับ
-
-เอ่อ...ถ้าเข้าเกมแล้ว
+ถ้าเข้าเกมแล้ว
 มาเจอที่โถงอาหารได้ไหม
 
-ฉันอยากพบเธออีกครั้ง
-
-ขอเป็นครั้งสุดท้ายก็ได้ครับ
-ช่วยตามใจเค้าอีกสักครั้งนะ 🤍`;
+ฉันอยากพบเธออีกครั้ง 🤍`;
 
 let i = 0;
 
-function typeWriter(){
-if(i < text.length){
-document.getElementById("message").innerHTML += text.charAt(i);
-i++;
-setTimeout(typeWriter,35);
-}
+/* envelope open */
+
+function openEnvelope(){
+
+document.querySelector(".envelope").style.display="none";
+document.getElementById("cake").style.display="block";
+
 }
 
-function start(){
+/* open message */
+
+function openMessage(){
+
+document.getElementById("cake").style.display="none";
+document.getElementById("card").style.display="block";
 
 document.getElementById("music").play();
 
-typeWriter();
+typeText();
+roses();
+fireworks();
 
 }
 
-/* ดอกไม้ลอย */
+/* typing */
 
-function createFlower(){
+function typeText(){
 
-const flower = document.createElement("div");
-flower.classList.add("flower");
-flower.innerHTML="🌸";
+if(i < message.length){
 
-flower.style.left=Math.random()*100+"vw";
-flower.style.animationDuration=(3+Math.random()*5)+"s";
+document.getElementById("text").innerHTML += message.charAt(i);
+i++;
 
-document.body.appendChild(flower);
-
-setTimeout(()=>{
-flower.remove();
-},8000)
+setTimeout(typeText,30);
 
 }
 
-setInterval(createFlower,300);
+}
+
+/* roses */
+
+function roses(){
+
+setInterval(()=>{
+
+let r=document.createElement("div");
+r.className="rose";
+r.innerHTML="🌹";
+
+r.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(r);
+
+setTimeout(()=>r.remove(),6000);
+
+},300);
+
+}
+
+/* fireworks */
+
+function fireworks(){
+
+setInterval(()=>{
+
+let f=document.createElement("div");
+f.className="firework";
+f.innerHTML="🎆";
+
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(f);
+
+setTimeout(()=>f.remove(),1000);
+
+},800);
+
+}
 
 </script>
 
