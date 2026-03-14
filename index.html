@@ -1,157 +1,49 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Nat 💖</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="images/gift.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/index.css">
 
-<style>
-body{
-margin:0;
-font-family:sans-serif;
-background:#0f0f1a;
-color:white;
-text-align:center;
-overflow:hidden;
-}
-
-#start{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-font-size:40px;
-cursor:pointer;
-}
-
-#letter{
-display:none;
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-font-size:22px;
-background:white;
-color:black;
-padding:30px;
-border-radius:20px;
-max-width:80%;
-}
-
-#cake{
-display:none;
-font-size:100px;
-margin-top:30px;
-cursor:pointer;
-}
-
-#rose{
-display:none;
-font-size:80px;
-animation:bloom 3s infinite;
-}
-
-@keyframes bloom{
-0%{transform:scale(0.5);}
-50%{transform:scale(1.2);}
-100%{transform:scale(0.5);}
-}
-
-canvas{
-position:absolute;
-top:0;
-left:0;
-}
-</style>
+  <title>For Nat 💖</title>
 </head>
 
 <body>
 
-<div id="start">For Nat 💖<br><small>tap to open</small></div>
+  <!-- เพลง -->
+  <audio id="music" loop>
+    <source src="song.mp3" type="audio/mp3">
+  </audio>
 
-<div id="letter">
-<h2>Happy Birthday 🎂</h2>
+  <!-- Background -->
+  <div class="night"></div>
 
-<p>
-ขอให้ปีนี้เป็นปีที่เต็มไปด้วยความสุข<br>
-ไม่ว่าจะเจออะไร ก็อยากให้รู้ว่า<br>
-ยังมีคนหนึ่งคนที่หวังดีกับเธอเสมอ
-สุขสันต์ วันเกิด สุขสันต์วันเกิดนะเคะ 🎂 วันนี้เป็นอีกหนึ่งวันที่สำคัญของเธอ 
-  เค้าแค่อยากอวยพรให้เธอจากใจจริง ๆ 🤍 ขอให้ปีนี้เป็นปีที่ใจดีกับเธอมาก ๆ ขอให้เธอได้เจอแต่เรื่องดี ๆ มีรอยยิ้มเยอะ ๆ 
-  และมีความสุขกับสิ่งเล็ก ๆ ในทุกวัน ถึงบางวันจะเหนื่อยหรือหนักไปบ้าง เค้าก็ยังคิดเหมือนเดิมว่าเธอเป็นคนที่เก่งมาก และผ่านอะไรหลาย ๆ 
-  อย่างมาได้เสมอ ถ้าวันไหนมันเหนื่อยหรือรู้สึกว่าต้องแบกรับอะไรหลายอย่างคนเดียว ก็อยากให้เธอรู้ไว้ว่ายังมีคนหนึ่งที่คอยเอาใจช่วยเธออยู่เสมอ 
-  เธอเป็นคนที่เค้าอยากให้พบเจอแต่ความสุขจริง ๆ ไม่ว่าจะวันนี้หรือวันไหน ๆ เค้าก็ยังคอยหวังดีและเป็นกำลังใจให้เธอเสมอ ดูแลตัวเองดี ๆ นะ พักผ่อนให้พอ 
-  และขับรถดี ๆ ด้วย🤍 ฉันรักเธอ รักมาเสมอ หลงรักทุกๆอย่างที่เป็นเธอและ อยากจะขอโทษที่เคยทำอะไรไม่ดีลงไปจริงๆค่ะ สุขสันต์วันเกิดนะเธอ 
-  ขอให้ปีนี้เป็นปีที่ดีสำหรับเธอ 🤍 ปีนี้ไม่ว่าเธอจะพบเจอหรือผ่านอะไรมาเชื่อว่าเธอจะยังยืนได้เสมอเชื่อมั่นในตัวเองและเค้าจะค่อยอยู่ตรงนี้เสมอ 
-  ขอให้มีคนมาซัพพอตคนรวยๆเยอะๆสมดังที่เธอหวัง นะครับ เอ่ยถ้าเข้าเกมแล้วมาเจอที่โถงอาหารได้ไหม ฉันอยากพบเธออีกครั้ง เป็นครั่้งขอเป็นครั้งสุดท้ายก็ได้ครับ 
-  ช่วยตามใจเค้าอีกสักครั้งนะ🤍</p>
+  <!-- Title -->
+  <h1 class="title">For Nat 💖</h1>
 
-<div id="rose">🌹</div>
+  <!-- Button -->
+  <div style="position: absolute; top: 60vh; width: 100%; display: flex; justify-content: center;">
+    <a href="flower.html" class="btn" onclick="playMusic()">
+      <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" class="sparkle">
+        <path
+          d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z">
+        </path>
+      </svg>
 
-<div id="cake">🎂</div>
-
-<p>เป่าเทียนสิ ✨</p>
-</div>
-
-<audio id="music" loop>
-<source src="song.mp3" type="audio/mp3">
-</audio>
-
-<canvas id="fireworks"></canvas>
+      <span class="text">Open</span>
+    </a>
+  </div>
 
 <script>
 
-let start=document.getElementById("start")
-let letter=document.getElementById("letter")
-let cake=document.getElementById("cake")
-let rose=document.getElementById("rose")
-let music=document.getElementById("music")
-
-start.onclick=()=>{
-start.style.display="none"
-letter.style.display="block"
-rose.style.display="block"
-cake.style.display="block"
-music.play()
-}
-
-cake.onclick=()=>{
-alert("Make a wish ✨")
-fireworks()
-}
-
-function fireworks(){
-
-let canvas=document.getElementById("fireworks")
-let ctx=canvas.getContext("2d")
-
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-
-for(let i=0;i<100;i++){
-
-let x=Math.random()*canvas.width
-let y=Math.random()*canvas.height
-
-ctx.fillStyle="hsl("+Math.random()*360+",100%,60%)"
-ctx.beginPath()
-ctx.arc(x,y,4,0,Math.PI*2)
-ctx.fill()
-
-}
-
-setTimeout(()=>{
-ctx.clearRect(0,0,canvas.width,canvas.height)
-},2000)
-
+function playMusic(){
+  const music = document.getElementById("music");
+  music.play();
 }
 
 </script>
 
 </body>
-</html>
-<body>
 
-<audio autoplay loop>
-<source src="Austin_Mahone_-_All_I_Ever_Need_Radio_Edit.mp3" type="audio/mp3">
-</audio>
+</html>
