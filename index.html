@@ -1,0 +1,189 @@
+```html
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Nat</title>
+
+<style>
+
+body{
+margin:0;
+padding:0;
+height:100vh;
+overflow:hidden;
+font-family: 'Segoe UI', sans-serif;
+background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+/* การ์ดจดหมาย */
+
+.card{
+background:rgba(0,0,0,0.35);
+padding:40px;
+border-radius:20px;
+max-width:750px;
+backdrop-filter:blur(10px);
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+/* ข้อความ */
+
+#message{
+white-space:pre-line;
+line-height:1.8;
+font-size:18px;
+}
+
+/* ปุ่ม */
+
+button{
+margin-top:20px;
+padding:12px 30px;
+border:none;
+border-radius:25px;
+background:white;
+color:#ff6b81;
+font-size:18px;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+/* ดอกไม้ลอย */
+
+.flower{
+position:absolute;
+font-size:24px;
+animation: fall linear infinite;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-10vh);
+opacity:1;
+}
+100%{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🎂 Happy Birthday Nat 🎂</h1>
+
+<div id="message"></div>
+
+<button onclick="start()">เปิดคำอวยพร 🤍</button>
+
+</div>
+
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3f5c6cbe52.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+const text = `สุขสันต์ วันเกิด สุขสันต์วันเกิดนะเคะ 🎂
+วันนี้เป็นอีกหนึ่งวันที่สำคัญของเธอ เค้าแค่อยากอวยพรให้เธอจากใจจริง ๆ
+
+🤍 ขอให้ปีนี้เป็นปีที่ใจดีกับเธอมาก ๆ ขอให้เธอได้เจอแต่เรื่องดี ๆ
+มีรอยยิ้มเยอะ ๆ และมีความสุขกับสิ่งเล็ก ๆ ในทุกวัน
+ถึงบางวันจะเหนื่อยหรือหนักไปบ้าง
+เค้าก็ยังคิดเหมือนเดิมว่าเธอเป็นคนที่เก่งมาก
+และผ่านอะไรหลาย ๆ อย่างมาได้เสมอ
+
+ถ้าวันไหนมันเหนื่อยหรือรู้สึกว่าต้องแบกรับอะไรหลายอย่างคนเดียว
+ก็อยากให้เธอรู้ไว้ว่ายังมีคนหนึ่งที่คอยเอาใจช่วยเธออยู่เสมอ
+
+เธอเป็นคนที่เค้าอยากให้พบเจอแต่ความสุขจริง ๆ
+ไม่ว่าจะวันนี้หรือวันไหน ๆ
+เค้าก็ยังคอยหวังดีและเป็นกำลังใจให้เธอเสมอ
+
+ดูแลตัวเองดี ๆ นะ พักผ่อนให้พอ และขับรถดี ๆ ด้วย 🤍
+
+ฉันรักเธอ รักมาเสมอ
+หลงรักทุก ๆ อย่างที่เป็นเธอ
+และอยากจะขอโทษที่เคยทำอะไรไม่ดีลงไปจริง ๆ
+
+สุขสันต์วันเกิดนะเธอ
+ขอให้ปีนี้เป็นปีที่ดีสำหรับเธอ 🤍
+
+ปีนี้ไม่ว่าเธอจะพบเจอหรือผ่านอะไรมา
+เชื่อว่าเธอจะยังยืนได้เสมอ
+เชื่อมั่นในตัวเองนะ
+
+และเค้าจะคอยอยู่ตรงนี้เสมอ
+
+ขอให้มีคนมาซัพพอร์ตคนรวย ๆ เยอะ ๆ
+สมดังที่เธอหวังนะครับ
+
+เอ่อ...ถ้าเข้าเกมแล้ว
+มาเจอที่โถงอาหารได้ไหม
+
+ฉันอยากพบเธออีกครั้ง
+
+ขอเป็นครั้งสุดท้ายก็ได้ครับ
+ช่วยตามใจเค้าอีกสักครั้งนะ 🤍`;
+
+let i = 0;
+
+function typeWriter(){
+if(i < text.length){
+document.getElementById("message").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeWriter,35);
+}
+}
+
+function start(){
+
+document.getElementById("music").play();
+
+typeWriter();
+
+}
+
+/* ดอกไม้ลอย */
+
+function createFlower(){
+
+const flower = document.createElement("div");
+flower.classList.add("flower");
+flower.innerHTML="🌸";
+
+flower.style.left=Math.random()*100+"vw";
+flower.style.animationDuration=(3+Math.random()*5)+"s";
+
+document.body.appendChild(flower);
+
+setTimeout(()=>{
+flower.remove();
+},8000)
+
+}
+
+setInterval(createFlower,300);
+
+</script>
+
+</body>
+</html>
+```
