@@ -1,241 +1,157 @@
-```html
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Nat</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Nat 💖</title>
 
 <style>
-
 body{
 margin:0;
-height:100vh;
-overflow:hidden;
-font-family:Segoe UI;
-background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
+font-family:sans-serif;
+background:#0f0f1a;
 color:white;
 text-align:center;
+overflow:hidden;
 }
 
-/* title */
-
-#title{
+#start{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
 font-size:40px;
-margin-bottom:20px;
-}
-
-/* envelope */
-
-.envelope{
-font-size:100px;
 cursor:pointer;
-transition:0.3s;
 }
 
-.envelope:hover{
-transform:scale(1.2);
+#letter{
+display:none;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:22px;
+background:white;
+color:black;
+padding:30px;
+border-radius:20px;
+max-width:80%;
 }
-
-/* cake */
 
 #cake{
 display:none;
-font-size:120px;
+font-size:100px;
+margin-top:30px;
 cursor:pointer;
-animation:float 2s infinite ease-in-out;
 }
 
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-15px)}
-}
-
-/* card */
-
-#card{
+#rose{
 display:none;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(10px);
-padding:25px;
-border-radius:20px;
-width:80%;
-max-width:600px;
-height:300px;
-overflow:auto;
-box-shadow:0 10px 30px rgba(0,0,0,0.3);
+font-size:80px;
+animation:bloom 3s infinite;
 }
 
-/* text */
-
-#text{
-white-space:pre-line;
-line-height:1.6;
+@keyframes bloom{
+0%{transform:scale(0.5);}
+50%{transform:scale(1.2);}
+100%{transform:scale(0.5);}
 }
 
-/* roses */
-
-.rose{
+canvas{
 position:absolute;
-font-size:30px;
-animation:fall 6s linear infinite;
+top:0;
+left:0;
 }
-
-@keyframes fall{
-0%{transform:translateY(-10vh)}
-100%{transform:translateY(110vh)}
-}
-
-/* fireworks */
-
-.firework{
-position:absolute;
-font-size:40px;
-animation:boom 1s ease-out forwards;
-}
-
-@keyframes boom{
-0%{transform:scale(0)}
-100%{transform:scale(2);opacity:0}
-}
-
 </style>
 </head>
 
 <body>
 
-<div id="title">For Nat 🤍</div>
+<div id="start">For Nat 💖<br><small>tap to open</small></div>
 
-<div class="envelope" onclick="openEnvelope()">💌</div>
+<div id="letter">
+<h2>Happy Birthday 🎂</h2>
 
-<div id="cake" onclick="openMessage()">🎂</div>
+<p>
+ขอให้ปีนี้เป็นปีที่เต็มไปด้วยความสุข<br>
+ไม่ว่าจะเจออะไร ก็อยากให้รู้ว่า<br>
+ยังมีคนหนึ่งคนที่หวังดีกับเธอเสมอ
+สุขสันต์ วันเกิด สุขสันต์วันเกิดนะเคะ 🎂 วันนี้เป็นอีกหนึ่งวันที่สำคัญของเธอ 
+  เค้าแค่อยากอวยพรให้เธอจากใจจริง ๆ 🤍 ขอให้ปีนี้เป็นปีที่ใจดีกับเธอมาก ๆ ขอให้เธอได้เจอแต่เรื่องดี ๆ มีรอยยิ้มเยอะ ๆ 
+  และมีความสุขกับสิ่งเล็ก ๆ ในทุกวัน ถึงบางวันจะเหนื่อยหรือหนักไปบ้าง เค้าก็ยังคิดเหมือนเดิมว่าเธอเป็นคนที่เก่งมาก และผ่านอะไรหลาย ๆ 
+  อย่างมาได้เสมอ ถ้าวันไหนมันเหนื่อยหรือรู้สึกว่าต้องแบกรับอะไรหลายอย่างคนเดียว ก็อยากให้เธอรู้ไว้ว่ายังมีคนหนึ่งที่คอยเอาใจช่วยเธออยู่เสมอ 
+  เธอเป็นคนที่เค้าอยากให้พบเจอแต่ความสุขจริง ๆ ไม่ว่าจะวันนี้หรือวันไหน ๆ เค้าก็ยังคอยหวังดีและเป็นกำลังใจให้เธอเสมอ ดูแลตัวเองดี ๆ นะ พักผ่อนให้พอ 
+  และขับรถดี ๆ ด้วย🤍 ฉันรักเธอ รักมาเสมอ หลงรักทุกๆอย่างที่เป็นเธอและ อยากจะขอโทษที่เคยทำอะไรไม่ดีลงไปจริงๆค่ะ สุขสันต์วันเกิดนะเธอ 
+  ขอให้ปีนี้เป็นปีที่ดีสำหรับเธอ 🤍 ปีนี้ไม่ว่าเธอจะพบเจอหรือผ่านอะไรมาเชื่อว่าเธอจะยังยืนได้เสมอเชื่อมั่นในตัวเองและเค้าจะค่อยอยู่ตรงนี้เสมอ 
+  ขอให้มีคนมาซัพพอตคนรวยๆเยอะๆสมดังที่เธอหวัง นะครับ เอ่ยถ้าเข้าเกมแล้วมาเจอที่โถงอาหารได้ไหม ฉันอยากพบเธออีกครั้ง เป็นครั่้งขอเป็นครั้งสุดท้ายก็ได้ครับ 
+  ช่วยตามใจเค้าอีกสักครั้งนะ🤍</p>
 
-<div id="card">
-<div id="text"></div>
+<div id="rose">🌹</div>
+
+<div id="cake">🎂</div>
+
+<p>เป่าเทียนสิ ✨</p>
 </div>
 
 <audio id="music" loop>
-<source src="reason.mp3" type="audio/mp3">
+<source src="song.mp3" type="audio/mp3">
 </audio>
+
+<canvas id="fireworks"></canvas>
 
 <script>
 
-/* message */
+let start=document.getElementById("start")
+let letter=document.getElementById("letter")
+let cake=document.getElementById("cake")
+let rose=document.getElementById("rose")
+let music=document.getElementById("music")
 
-const message = `สุขสันต์วันเกิดนะ Nat 🎂
-
-วันนี้เป็นอีกหนึ่งวันที่สำคัญของเธอ
-เค้าแค่อยากอวยพรให้เธอจากใจจริง
-
-🤍 ขอให้ปีนี้ใจดีกับเธอมาก ๆ
-ขอให้เธอได้เจอแต่เรื่องดี ๆ
-มีรอยยิ้มเยอะ ๆ
-
-ถึงบางวันจะเหนื่อย
-เค้าก็ยังคิดเสมอว่าเธอเก่งมาก
-
-ดูแลตัวเองดี ๆ นะ
-พักผ่อนให้พอ และขับรถดี ๆ ด้วย
-
-ฉันรักเธอ รักมาเสมอ
-และขอโทษในสิ่งที่เคยทำไม่ดี
-
-ถ้าเข้าเกมแล้ว
-มาเจอที่โถงอาหารได้ไหม
-
-ฉันอยากพบเธออีกครั้ง 🤍`;
-
-let i = 0;
-
-/* envelope open */
-
-function openEnvelope(){
-
-document.querySelector(".envelope").style.display="none";
-document.getElementById("cake").style.display="block";
-
+start.onclick=()=>{
+start.style.display="none"
+letter.style.display="block"
+rose.style.display="block"
+cake.style.display="block"
+music.play()
 }
 
-/* open message */
-
-function openMessage(){
-
-document.getElementById("cake").style.display="none";
-document.getElementById("card").style.display="block";
-
-document.getElementById("music").play();
-
-typeText();
-roses();
-fireworks();
-
+cake.onclick=()=>{
+alert("Make a wish ✨")
+fireworks()
 }
-
-/* typing */
-
-function typeText(){
-
-if(i < message.length){
-
-document.getElementById("text").innerHTML += message.charAt(i);
-i++;
-
-setTimeout(typeText,30);
-
-}
-
-}
-
-/* roses */
-
-function roses(){
-
-setInterval(()=>{
-
-let r=document.createElement("div");
-r.className="rose";
-r.innerHTML="🌹";
-
-r.style.left=Math.random()*100+"vw";
-
-document.body.appendChild(r);
-
-setTimeout(()=>r.remove(),6000);
-
-},300);
-
-}
-
-/* fireworks */
 
 function fireworks(){
 
-setInterval(()=>{
+let canvas=document.getElementById("fireworks")
+let ctx=canvas.getContext("2d")
 
-let f=document.createElement("div");
-f.className="firework";
-f.innerHTML="🎆";
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
 
-f.style.left=Math.random()*100+"vw";
-f.style.top=Math.random()*100+"vh";
+for(let i=0;i<100;i++){
 
-document.body.appendChild(f);
+let x=Math.random()*canvas.width
+let y=Math.random()*canvas.height
 
-setTimeout(()=>f.remove(),1000);
+ctx.fillStyle="hsl("+Math.random()*360+",100%,60%)"
+ctx.beginPath()
+ctx.arc(x,y,4,0,Math.PI*2)
+ctx.fill()
 
-},800);
+}
+
+setTimeout(()=>{
+ctx.clearRect(0,0,canvas.width,canvas.height)
+},2000)
 
 }
 
 </script>
 
 </body>
+</html>
+<body>
 
 <audio autoplay loop>
 <source src="Austin_Mahone_-_All_I_Ever_Need_Radio_Edit.mp3" type="audio/mp3">
 </audio>
-</html>
-```
